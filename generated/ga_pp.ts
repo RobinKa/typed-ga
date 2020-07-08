@@ -86,10 +86,10 @@ export type GeometricProductResultType<A, B> =
 
 export const geometricProduct = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): GeometricProductResultType<A, B> => {
     let resultScalar = undefined
-    const scalar_0 = a.scalar && b.scalar
-    const scalar_1 = a.e0 && b.e0
-    const scalar_2 = a.e1 && b.e1
-    const scalar_3 = a.e01 && b.e01
+    const scalar_0 = a.scalar !== undefined && b.scalar !== undefined
+    const scalar_1 = a.e0 !== undefined && b.e0 !== undefined
+    const scalar_2 = a.e1 !== undefined && b.e1 !== undefined
+    const scalar_3 = a.e01 !== undefined && b.e01 !== undefined
     if (scalar_0 || scalar_1 || scalar_2 || scalar_3) {
         resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
@@ -98,10 +98,10 @@ export const geometricProduct = <A extends OptionalMultiVector, B extends Option
         if (scalar_3) resultScalar += -1.0 * (a.e01! * b.e01!)
     }
     let resultE0 = undefined
-    const e0_0 = a.scalar && b.e0
-    const e0_1 = a.e0 && b.scalar
-    const e0_2 = a.e1 && b.e01
-    const e0_3 = a.e01 && b.e1
+    const e0_0 = a.scalar !== undefined && b.e0 !== undefined
+    const e0_1 = a.e0 !== undefined && b.scalar !== undefined
+    const e0_2 = a.e1 !== undefined && b.e01 !== undefined
+    const e0_3 = a.e01 !== undefined && b.e1 !== undefined
     if (e0_0 || e0_1 || e0_2 || e0_3) {
         resultE0 = 0
         if (e0_0) resultE0 += 1.0 * (a.scalar! * b.e0!)
@@ -110,10 +110,10 @@ export const geometricProduct = <A extends OptionalMultiVector, B extends Option
         if (e0_3) resultE0 += 1.0 * (a.e01! * b.e1!)
     }
     let resultE1 = undefined
-    const e1_0 = a.scalar && b.e1
-    const e1_1 = a.e0 && b.e01
-    const e1_2 = a.e1 && b.scalar
-    const e1_3 = a.e01 && b.e0
+    const e1_0 = a.scalar !== undefined && b.e1 !== undefined
+    const e1_1 = a.e0 !== undefined && b.e01 !== undefined
+    const e1_2 = a.e1 !== undefined && b.scalar !== undefined
+    const e1_3 = a.e01 !== undefined && b.e0 !== undefined
     if (e1_0 || e1_1 || e1_2 || e1_3) {
         resultE1 = 0
         if (e1_0) resultE1 += 1.0 * (a.scalar! * b.e1!)
@@ -122,10 +122,10 @@ export const geometricProduct = <A extends OptionalMultiVector, B extends Option
         if (e1_3) resultE1 += -1.0 * (a.e01! * b.e0!)
     }
     let resultE01 = undefined
-    const e01_0 = a.scalar && b.e01
-    const e01_1 = a.e0 && b.e1
-    const e01_2 = a.e1 && b.e0
-    const e01_3 = a.e01 && b.scalar
+    const e01_0 = a.scalar !== undefined && b.e01 !== undefined
+    const e01_1 = a.e0 !== undefined && b.e1 !== undefined
+    const e01_2 = a.e1 !== undefined && b.e0 !== undefined
+    const e01_3 = a.e01 !== undefined && b.scalar !== undefined
     if (e01_0 || e01_1 || e01_2 || e01_3) {
         resultE01 = 0
         if (e01_0) resultE01 += 1.0 * (a.scalar! * b.e01!)
@@ -168,10 +168,10 @@ export type InnerProductResultType<A, B> =
 
 export const innerProduct = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): InnerProductResultType<A, B> => {
     let resultScalar = undefined
-    const scalar_0 = a.scalar && b.scalar
-    const scalar_1 = a.e0 && b.e0
-    const scalar_2 = a.e1 && b.e1
-    const scalar_3 = a.e01 && b.e01
+    const scalar_0 = a.scalar !== undefined && b.scalar !== undefined
+    const scalar_1 = a.e0 !== undefined && b.e0 !== undefined
+    const scalar_2 = a.e1 !== undefined && b.e1 !== undefined
+    const scalar_3 = a.e01 !== undefined && b.e01 !== undefined
     if (scalar_0 || scalar_1 || scalar_2 || scalar_3) {
         resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
@@ -180,10 +180,10 @@ export const innerProduct = <A extends OptionalMultiVector, B extends OptionalMu
         if (scalar_3) resultScalar += -1.0 * (a.e01! * b.e01!)
     }
     let resultE0 = undefined
-    const e0_0 = a.scalar && b.e0
-    const e0_1 = a.e0 && b.scalar
-    const e0_2 = a.e1 && b.e01
-    const e0_3 = a.e01 && b.e1
+    const e0_0 = a.scalar !== undefined && b.e0 !== undefined
+    const e0_1 = a.e0 !== undefined && b.scalar !== undefined
+    const e0_2 = a.e1 !== undefined && b.e01 !== undefined
+    const e0_3 = a.e01 !== undefined && b.e1 !== undefined
     if (e0_0 || e0_1 || e0_2 || e0_3) {
         resultE0 = 0
         if (e0_0) resultE0 += 1.0 * (a.scalar! * b.e0!)
@@ -192,10 +192,10 @@ export const innerProduct = <A extends OptionalMultiVector, B extends OptionalMu
         if (e0_3) resultE0 += 1.0 * (a.e01! * b.e1!)
     }
     let resultE1 = undefined
-    const e1_0 = a.scalar && b.e1
-    const e1_1 = a.e0 && b.e01
-    const e1_2 = a.e1 && b.scalar
-    const e1_3 = a.e01 && b.e0
+    const e1_0 = a.scalar !== undefined && b.e1 !== undefined
+    const e1_1 = a.e0 !== undefined && b.e01 !== undefined
+    const e1_2 = a.e1 !== undefined && b.scalar !== undefined
+    const e1_3 = a.e01 !== undefined && b.e0 !== undefined
     if (e1_0 || e1_1 || e1_2 || e1_3) {
         resultE1 = 0
         if (e1_0) resultE1 += 1.0 * (a.scalar! * b.e1!)
@@ -204,8 +204,8 @@ export const innerProduct = <A extends OptionalMultiVector, B extends OptionalMu
         if (e1_3) resultE1 += -1.0 * (a.e01! * b.e0!)
     }
     let resultE01 = undefined
-    const e01_0 = a.scalar && b.e01
-    const e01_1 = a.e01 && b.scalar
+    const e01_0 = a.scalar !== undefined && b.e01 !== undefined
+    const e01_1 = a.e01 !== undefined && b.scalar !== undefined
     if (e01_0 || e01_1) {
         resultE01 = 0
         if (e01_0) resultE01 += 1.0 * (a.scalar! * b.e01!)
@@ -241,32 +241,32 @@ export type ExteriorProductResultType<A, B> =
 
 export const exteriorProduct = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): ExteriorProductResultType<A, B> => {
     let resultScalar = undefined
-    const scalar_0 = a.scalar && b.scalar
+    const scalar_0 = a.scalar !== undefined && b.scalar !== undefined
     if (scalar_0) {
         resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
     }
     let resultE0 = undefined
-    const e0_0 = a.scalar && b.e0
-    const e0_1 = a.e0 && b.scalar
+    const e0_0 = a.scalar !== undefined && b.e0 !== undefined
+    const e0_1 = a.e0 !== undefined && b.scalar !== undefined
     if (e0_0 || e0_1) {
         resultE0 = 0
         if (e0_0) resultE0 += 1.0 * (a.scalar! * b.e0!)
         if (e0_1) resultE0 += 1.0 * (a.e0! * b.scalar!)
     }
     let resultE1 = undefined
-    const e1_0 = a.scalar && b.e1
-    const e1_1 = a.e1 && b.scalar
+    const e1_0 = a.scalar !== undefined && b.e1 !== undefined
+    const e1_1 = a.e1 !== undefined && b.scalar !== undefined
     if (e1_0 || e1_1) {
         resultE1 = 0
         if (e1_0) resultE1 += 1.0 * (a.scalar! * b.e1!)
         if (e1_1) resultE1 += 1.0 * (a.e1! * b.scalar!)
     }
     let resultE01 = undefined
-    const e01_0 = a.scalar && b.e01
-    const e01_1 = a.e0 && b.e1
-    const e01_2 = a.e1 && b.e0
-    const e01_3 = a.e01 && b.scalar
+    const e01_0 = a.scalar !== undefined && b.e01 !== undefined
+    const e01_1 = a.e0 !== undefined && b.e1 !== undefined
+    const e01_2 = a.e1 !== undefined && b.e0 !== undefined
+    const e01_3 = a.e01 !== undefined && b.scalar !== undefined
     if (e01_0 || e01_1 || e01_2 || e01_3) {
         resultE01 = 0
         if (e01_0) resultE01 += 1.0 * (a.scalar! * b.e01!)
@@ -285,20 +285,20 @@ export const exteriorProduct = <A extends OptionalMultiVector, B extends Optiona
 
 export const multiply = <A extends OptionalMultiVector>(a: A, b: number): A => {
     const result: any = {
-        scalar: a.scalar && a.scalar * b,
-        e0: a.e0 && a.e0 * b,
-        e1: a.e1 && a.e1 * b,
-        e01: a.e01 && a.e01 * b,
+        scalar: a.scalar !== undefined ? a.scalar * b : undefined,
+        e0: a.e0 !== undefined ? a.e0 * b : undefined,
+        e1: a.e1 !== undefined ? a.e1 * b : undefined,
+        e01: a.e01 !== undefined ? a.e01 * b : undefined,
     }
     return result as A
 }
 
 export const div = <A extends OptionalMultiVector>(a: A, b: number): A => {
     const result: any = {
-        scalar: a.scalar && a.scalar / b,
-        e0: a.e0 && a.e0 / b,
-        e1: a.e1 && a.e1 / b,
-        e01: a.e01 && a.e01 / b,
+        scalar: a.scalar !== undefined ? a.scalar / b : undefined,
+        e0: a.e0 !== undefined ? a.e0 / b : undefined,
+        e1: a.e1 !== undefined ? a.e1 / b : undefined,
+        e01: a.e01 !== undefined ? a.e01 / b : undefined,
     }
     return result as A
 }
