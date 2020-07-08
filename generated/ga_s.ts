@@ -1,15 +1,8 @@
 export type BladeScalar = { scalar: number }
 
 export type Scalar = BladeScalar
-export type Vector = 
-export type BiVector = 
-export type TriVector = 
-export type PseudoTriVector = 
-export type PseudoBiVector = 
-export type PseudoVector = 
 export type PseudoScalar = BladeScalar
 export type Even = BladeScalar
-export type Odd = 
 export type MultiVector = BladeScalar
 
 export type OptionalMultiVector = {
