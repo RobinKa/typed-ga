@@ -103,131 +103,167 @@ export type GeometricProductResultType<A, B> =
     ) : {}) &
     (A extends BladeE0 ? (
         (B extends BladeScalar ? BladeE0 : {}) &
-        (B extends BladeE0 ? BladeScalar : {}) &
         (B extends BladeE1 ? BladeE01 : {}) &
         (B extends BladeE2 ? BladeE02 : {}) &
-        (B extends BladeE01 ? BladeE1 : {}) &
-        (B extends BladeE02 ? BladeE2 : {}) &
-        (B extends BladeE12 ? BladeE012 : {}) &
-        (B extends BladeE012 ? BladeE12 : {})
+        (B extends BladeE12 ? BladeE012 : {})
     ) : {}) &
     (A extends BladeE1 ? (
         (B extends BladeScalar ? BladeE1 : {}) &
         (B extends BladeE0 ? BladeE01 : {}) &
+        (B extends BladeE1 ? BladeScalar : {}) &
         (B extends BladeE2 ? BladeE12 : {}) &
-        (B extends BladeE02 ? BladeE012 : {})
+        (B extends BladeE01 ? BladeE0 : {}) &
+        (B extends BladeE02 ? BladeE012 : {}) &
+        (B extends BladeE12 ? BladeE2 : {}) &
+        (B extends BladeE012 ? BladeE02 : {})
     ) : {}) &
     (A extends BladeE2 ? (
         (B extends BladeScalar ? BladeE2 : {}) &
         (B extends BladeE0 ? BladeE02 : {}) &
         (B extends BladeE1 ? BladeE12 : {}) &
-        (B extends BladeE01 ? BladeE012 : {})
+        (B extends BladeE2 ? BladeScalar : {}) &
+        (B extends BladeE01 ? BladeE012 : {}) &
+        (B extends BladeE02 ? BladeE0 : {}) &
+        (B extends BladeE12 ? BladeE1 : {}) &
+        (B extends BladeE012 ? BladeE01 : {})
     ) : {}) &
     (A extends BladeE01 ? (
         (B extends BladeScalar ? BladeE01 : {}) &
-        (B extends BladeE0 ? BladeE1 : {}) &
+        (B extends BladeE1 ? BladeE0 : {}) &
         (B extends BladeE2 ? BladeE012 : {}) &
-        (B extends BladeE02 ? BladeE12 : {})
+        (B extends BladeE12 ? BladeE02 : {})
     ) : {}) &
     (A extends BladeE02 ? (
         (B extends BladeScalar ? BladeE02 : {}) &
-        (B extends BladeE0 ? BladeE2 : {}) &
         (B extends BladeE1 ? BladeE012 : {}) &
-        (B extends BladeE01 ? BladeE12 : {})
+        (B extends BladeE2 ? BladeE0 : {}) &
+        (B extends BladeE12 ? BladeE01 : {})
     ) : {}) &
     (A extends BladeE12 ? (
         (B extends BladeScalar ? BladeE12 : {}) &
-        (B extends BladeE0 ? BladeE012 : {})
+        (B extends BladeE0 ? BladeE012 : {}) &
+        (B extends BladeE1 ? BladeE2 : {}) &
+        (B extends BladeE2 ? BladeE1 : {}) &
+        (B extends BladeE01 ? BladeE02 : {}) &
+        (B extends BladeE02 ? BladeE01 : {}) &
+        (B extends BladeE12 ? BladeScalar : {}) &
+        (B extends BladeE012 ? BladeE0 : {})
     ) : {}) &
     (A extends BladeE012 ? (
         (B extends BladeScalar ? BladeE012 : {}) &
-        (B extends BladeE0 ? BladeE12 : {})
+        (B extends BladeE1 ? BladeE02 : {}) &
+        (B extends BladeE2 ? BladeE01 : {}) &
+        (B extends BladeE12 ? BladeE0 : {})
     ) : {})
 
 export const geometricProduct = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): GeometricProductResultType<A, B> => {
     let resultScalar = undefined
     const scalar_0 = a.scalar !== undefined && b.scalar !== undefined
-    const scalar_1 = a.e0 !== undefined && b.e0 !== undefined
-    if (scalar_0 || scalar_1) {
+    const scalar_1 = a.e1 !== undefined && b.e1 !== undefined
+    const scalar_2 = a.e2 !== undefined && b.e2 !== undefined
+    const scalar_3 = a.e12 !== undefined && b.e12 !== undefined
+    if (scalar_0 || scalar_1 || scalar_2 || scalar_3) {
         resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
-        if (scalar_1) resultScalar += -1.0 * (a.e0! * b.e0!)
+        if (scalar_1) resultScalar += -1.0 * (a.e1! * b.e1!)
+        if (scalar_2) resultScalar += -1.0 * (a.e2! * b.e2!)
+        if (scalar_3) resultScalar += -1.0 * (a.e12! * b.e12!)
     }
     let resultE0 = undefined
     const e0_0 = a.scalar !== undefined && b.e0 !== undefined
     const e0_1 = a.e0 !== undefined && b.scalar !== undefined
-    if (e0_0 || e0_1) {
+    const e0_2 = a.e1 !== undefined && b.e01 !== undefined
+    const e0_3 = a.e2 !== undefined && b.e02 !== undefined
+    const e0_4 = a.e01 !== undefined && b.e1 !== undefined
+    const e0_5 = a.e02 !== undefined && b.e2 !== undefined
+    const e0_6 = a.e12 !== undefined && b.e012 !== undefined
+    const e0_7 = a.e012 !== undefined && b.e12 !== undefined
+    if (e0_0 || e0_1 || e0_2 || e0_3 || e0_4 || e0_5 || e0_6 || e0_7) {
         resultE0 = 0
         if (e0_0) resultE0 += 1.0 * (a.scalar! * b.e0!)
         if (e0_1) resultE0 += 1.0 * (a.e0! * b.scalar!)
+        if (e0_2) resultE0 += 1.0 * (a.e1! * b.e01!)
+        if (e0_3) resultE0 += 1.0 * (a.e2! * b.e02!)
+        if (e0_4) resultE0 += -1.0 * (a.e01! * b.e1!)
+        if (e0_5) resultE0 += -1.0 * (a.e02! * b.e2!)
+        if (e0_6) resultE0 += -1.0 * (a.e12! * b.e012!)
+        if (e0_7) resultE0 += -1.0 * (a.e012! * b.e12!)
     }
     let resultE1 = undefined
     const e1_0 = a.scalar !== undefined && b.e1 !== undefined
-    const e1_1 = a.e0 !== undefined && b.e01 !== undefined
-    const e1_2 = a.e1 !== undefined && b.scalar !== undefined
-    const e1_3 = a.e01 !== undefined && b.e0 !== undefined
+    const e1_1 = a.e1 !== undefined && b.scalar !== undefined
+    const e1_2 = a.e2 !== undefined && b.e12 !== undefined
+    const e1_3 = a.e12 !== undefined && b.e2 !== undefined
     if (e1_0 || e1_1 || e1_2 || e1_3) {
         resultE1 = 0
         if (e1_0) resultE1 += 1.0 * (a.scalar! * b.e1!)
-        if (e1_1) resultE1 += -1.0 * (a.e0! * b.e01!)
-        if (e1_2) resultE1 += 1.0 * (a.e1! * b.scalar!)
-        if (e1_3) resultE1 += 1.0 * (a.e01! * b.e0!)
+        if (e1_1) resultE1 += 1.0 * (a.e1! * b.scalar!)
+        if (e1_2) resultE1 += 1.0 * (a.e2! * b.e12!)
+        if (e1_3) resultE1 += -1.0 * (a.e12! * b.e2!)
     }
     let resultE2 = undefined
     const e2_0 = a.scalar !== undefined && b.e2 !== undefined
-    const e2_1 = a.e0 !== undefined && b.e02 !== undefined
+    const e2_1 = a.e1 !== undefined && b.e12 !== undefined
     const e2_2 = a.e2 !== undefined && b.scalar !== undefined
-    const e2_3 = a.e02 !== undefined && b.e0 !== undefined
+    const e2_3 = a.e12 !== undefined && b.e1 !== undefined
     if (e2_0 || e2_1 || e2_2 || e2_3) {
         resultE2 = 0
         if (e2_0) resultE2 += 1.0 * (a.scalar! * b.e2!)
-        if (e2_1) resultE2 += -1.0 * (a.e0! * b.e02!)
+        if (e2_1) resultE2 += -1.0 * (a.e1! * b.e12!)
         if (e2_2) resultE2 += 1.0 * (a.e2! * b.scalar!)
-        if (e2_3) resultE2 += 1.0 * (a.e02! * b.e0!)
+        if (e2_3) resultE2 += 1.0 * (a.e12! * b.e1!)
     }
     let resultE01 = undefined
     const e01_0 = a.scalar !== undefined && b.e01 !== undefined
     const e01_1 = a.e0 !== undefined && b.e1 !== undefined
     const e01_2 = a.e1 !== undefined && b.e0 !== undefined
-    const e01_3 = a.e01 !== undefined && b.scalar !== undefined
-    if (e01_0 || e01_1 || e01_2 || e01_3) {
+    const e01_3 = a.e2 !== undefined && b.e012 !== undefined
+    const e01_4 = a.e01 !== undefined && b.scalar !== undefined
+    const e01_5 = a.e02 !== undefined && b.e12 !== undefined
+    const e01_6 = a.e12 !== undefined && b.e02 !== undefined
+    const e01_7 = a.e012 !== undefined && b.e2 !== undefined
+    if (e01_0 || e01_1 || e01_2 || e01_3 || e01_4 || e01_5 || e01_6 || e01_7) {
         resultE01 = 0
         if (e01_0) resultE01 += 1.0 * (a.scalar! * b.e01!)
         if (e01_1) resultE01 += 1.0 * (a.e0! * b.e1!)
         if (e01_2) resultE01 += -1.0 * (a.e1! * b.e0!)
-        if (e01_3) resultE01 += 1.0 * (a.e01! * b.scalar!)
+        if (e01_3) resultE01 += -1.0 * (a.e2! * b.e012!)
+        if (e01_4) resultE01 += 1.0 * (a.e01! * b.scalar!)
+        if (e01_5) resultE01 += 1.0 * (a.e02! * b.e12!)
+        if (e01_6) resultE01 += -1.0 * (a.e12! * b.e02!)
+        if (e01_7) resultE01 += -1.0 * (a.e012! * b.e2!)
     }
     let resultE02 = undefined
     const e02_0 = a.scalar !== undefined && b.e02 !== undefined
     const e02_1 = a.e0 !== undefined && b.e2 !== undefined
-    const e02_2 = a.e2 !== undefined && b.e0 !== undefined
-    const e02_3 = a.e02 !== undefined && b.scalar !== undefined
-    if (e02_0 || e02_1 || e02_2 || e02_3) {
+    const e02_2 = a.e1 !== undefined && b.e012 !== undefined
+    const e02_3 = a.e2 !== undefined && b.e0 !== undefined
+    const e02_4 = a.e01 !== undefined && b.e12 !== undefined
+    const e02_5 = a.e02 !== undefined && b.scalar !== undefined
+    const e02_6 = a.e12 !== undefined && b.e01 !== undefined
+    const e02_7 = a.e012 !== undefined && b.e1 !== undefined
+    if (e02_0 || e02_1 || e02_2 || e02_3 || e02_4 || e02_5 || e02_6 || e02_7) {
         resultE02 = 0
         if (e02_0) resultE02 += 1.0 * (a.scalar! * b.e02!)
         if (e02_1) resultE02 += 1.0 * (a.e0! * b.e2!)
-        if (e02_2) resultE02 += -1.0 * (a.e2! * b.e0!)
-        if (e02_3) resultE02 += 1.0 * (a.e02! * b.scalar!)
+        if (e02_2) resultE02 += 1.0 * (a.e1! * b.e012!)
+        if (e02_3) resultE02 += -1.0 * (a.e2! * b.e0!)
+        if (e02_4) resultE02 += -1.0 * (a.e01! * b.e12!)
+        if (e02_5) resultE02 += 1.0 * (a.e02! * b.scalar!)
+        if (e02_6) resultE02 += 1.0 * (a.e12! * b.e01!)
+        if (e02_7) resultE02 += 1.0 * (a.e012! * b.e1!)
     }
     let resultE12 = undefined
     const e12_0 = a.scalar !== undefined && b.e12 !== undefined
-    const e12_1 = a.e0 !== undefined && b.e012 !== undefined
-    const e12_2 = a.e1 !== undefined && b.e2 !== undefined
-    const e12_3 = a.e2 !== undefined && b.e1 !== undefined
-    const e12_4 = a.e01 !== undefined && b.e02 !== undefined
-    const e12_5 = a.e02 !== undefined && b.e01 !== undefined
-    const e12_6 = a.e12 !== undefined && b.scalar !== undefined
-    const e12_7 = a.e012 !== undefined && b.e0 !== undefined
-    if (e12_0 || e12_1 || e12_2 || e12_3 || e12_4 || e12_5 || e12_6 || e12_7) {
+    const e12_1 = a.e1 !== undefined && b.e2 !== undefined
+    const e12_2 = a.e2 !== undefined && b.e1 !== undefined
+    const e12_3 = a.e12 !== undefined && b.scalar !== undefined
+    if (e12_0 || e12_1 || e12_2 || e12_3) {
         resultE12 = 0
         if (e12_0) resultE12 += 1.0 * (a.scalar! * b.e12!)
-        if (e12_1) resultE12 += -1.0 * (a.e0! * b.e012!)
-        if (e12_2) resultE12 += 1.0 * (a.e1! * b.e2!)
-        if (e12_3) resultE12 += -1.0 * (a.e2! * b.e1!)
-        if (e12_4) resultE12 += 1.0 * (a.e01! * b.e02!)
-        if (e12_5) resultE12 += -1.0 * (a.e02! * b.e01!)
-        if (e12_6) resultE12 += 1.0 * (a.e12! * b.scalar!)
-        if (e12_7) resultE12 += -1.0 * (a.e012! * b.e0!)
+        if (e12_1) resultE12 += 1.0 * (a.e1! * b.e2!)
+        if (e12_2) resultE12 += -1.0 * (a.e2! * b.e1!)
+        if (e12_3) resultE12 += 1.0 * (a.e12! * b.scalar!)
     }
     let resultE012 = undefined
     const e012_0 = a.scalar !== undefined && b.e012 !== undefined
@@ -274,102 +310,132 @@ export type InnerProductResultType<A, B> =
         (B extends BladeE012 ? BladeE012 : {})
     ) : {}) &
     (A extends BladeE0 ? (
-        (B extends BladeScalar ? BladeE0 : {}) &
-        (B extends BladeE0 ? BladeScalar : {}) &
-        (B extends BladeE01 ? BladeE1 : {}) &
-        (B extends BladeE02 ? BladeE2 : {}) &
-        (B extends BladeE012 ? BladeE12 : {})
+        (B extends BladeScalar ? BladeE0 : {})
     ) : {}) &
     (A extends BladeE1 ? (
-        (B extends BladeScalar ? BladeE1 : {})
+        (B extends BladeScalar ? BladeE1 : {}) &
+        (B extends BladeE1 ? BladeScalar : {}) &
+        (B extends BladeE01 ? BladeE0 : {}) &
+        (B extends BladeE12 ? BladeE2 : {}) &
+        (B extends BladeE012 ? BladeE02 : {})
     ) : {}) &
     (A extends BladeE2 ? (
-        (B extends BladeScalar ? BladeE2 : {})
+        (B extends BladeScalar ? BladeE2 : {}) &
+        (B extends BladeE2 ? BladeScalar : {}) &
+        (B extends BladeE02 ? BladeE0 : {}) &
+        (B extends BladeE12 ? BladeE1 : {}) &
+        (B extends BladeE012 ? BladeE01 : {})
     ) : {}) &
     (A extends BladeE01 ? (
         (B extends BladeScalar ? BladeE01 : {}) &
-        (B extends BladeE0 ? BladeE1 : {})
+        (B extends BladeE1 ? BladeE0 : {})
     ) : {}) &
     (A extends BladeE02 ? (
         (B extends BladeScalar ? BladeE02 : {}) &
-        (B extends BladeE0 ? BladeE2 : {})
+        (B extends BladeE2 ? BladeE0 : {})
     ) : {}) &
     (A extends BladeE12 ? (
-        (B extends BladeScalar ? BladeE12 : {})
+        (B extends BladeScalar ? BladeE12 : {}) &
+        (B extends BladeE1 ? BladeE2 : {}) &
+        (B extends BladeE2 ? BladeE1 : {}) &
+        (B extends BladeE12 ? BladeScalar : {}) &
+        (B extends BladeE012 ? BladeE0 : {})
     ) : {}) &
     (A extends BladeE012 ? (
         (B extends BladeScalar ? BladeE012 : {}) &
-        (B extends BladeE0 ? BladeE12 : {})
+        (B extends BladeE1 ? BladeE02 : {}) &
+        (B extends BladeE2 ? BladeE01 : {}) &
+        (B extends BladeE12 ? BladeE0 : {})
     ) : {})
 
 export const innerProduct = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): InnerProductResultType<A, B> => {
     let resultScalar = undefined
     const scalar_0 = a.scalar !== undefined && b.scalar !== undefined
-    const scalar_1 = a.e0 !== undefined && b.e0 !== undefined
-    if (scalar_0 || scalar_1) {
+    const scalar_1 = a.e1 !== undefined && b.e1 !== undefined
+    const scalar_2 = a.e2 !== undefined && b.e2 !== undefined
+    const scalar_3 = a.e12 !== undefined && b.e12 !== undefined
+    if (scalar_0 || scalar_1 || scalar_2 || scalar_3) {
         resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
-        if (scalar_1) resultScalar += -1.0 * (a.e0! * b.e0!)
+        if (scalar_1) resultScalar += -1.0 * (a.e1! * b.e1!)
+        if (scalar_2) resultScalar += -1.0 * (a.e2! * b.e2!)
+        if (scalar_3) resultScalar += -1.0 * (a.e12! * b.e12!)
     }
     let resultE0 = undefined
     const e0_0 = a.scalar !== undefined && b.e0 !== undefined
     const e0_1 = a.e0 !== undefined && b.scalar !== undefined
-    if (e0_0 || e0_1) {
+    const e0_2 = a.e1 !== undefined && b.e01 !== undefined
+    const e0_3 = a.e2 !== undefined && b.e02 !== undefined
+    const e0_4 = a.e01 !== undefined && b.e1 !== undefined
+    const e0_5 = a.e02 !== undefined && b.e2 !== undefined
+    const e0_6 = a.e12 !== undefined && b.e012 !== undefined
+    const e0_7 = a.e012 !== undefined && b.e12 !== undefined
+    if (e0_0 || e0_1 || e0_2 || e0_3 || e0_4 || e0_5 || e0_6 || e0_7) {
         resultE0 = 0
         if (e0_0) resultE0 += 1.0 * (a.scalar! * b.e0!)
         if (e0_1) resultE0 += 1.0 * (a.e0! * b.scalar!)
+        if (e0_2) resultE0 += 1.0 * (a.e1! * b.e01!)
+        if (e0_3) resultE0 += 1.0 * (a.e2! * b.e02!)
+        if (e0_4) resultE0 += -1.0 * (a.e01! * b.e1!)
+        if (e0_5) resultE0 += -1.0 * (a.e02! * b.e2!)
+        if (e0_6) resultE0 += -1.0 * (a.e12! * b.e012!)
+        if (e0_7) resultE0 += -1.0 * (a.e012! * b.e12!)
     }
     let resultE1 = undefined
     const e1_0 = a.scalar !== undefined && b.e1 !== undefined
-    const e1_1 = a.e0 !== undefined && b.e01 !== undefined
-    const e1_2 = a.e1 !== undefined && b.scalar !== undefined
-    const e1_3 = a.e01 !== undefined && b.e0 !== undefined
+    const e1_1 = a.e1 !== undefined && b.scalar !== undefined
+    const e1_2 = a.e2 !== undefined && b.e12 !== undefined
+    const e1_3 = a.e12 !== undefined && b.e2 !== undefined
     if (e1_0 || e1_1 || e1_2 || e1_3) {
         resultE1 = 0
         if (e1_0) resultE1 += 1.0 * (a.scalar! * b.e1!)
-        if (e1_1) resultE1 += -1.0 * (a.e0! * b.e01!)
-        if (e1_2) resultE1 += 1.0 * (a.e1! * b.scalar!)
-        if (e1_3) resultE1 += 1.0 * (a.e01! * b.e0!)
+        if (e1_1) resultE1 += 1.0 * (a.e1! * b.scalar!)
+        if (e1_2) resultE1 += 1.0 * (a.e2! * b.e12!)
+        if (e1_3) resultE1 += -1.0 * (a.e12! * b.e2!)
     }
     let resultE2 = undefined
     const e2_0 = a.scalar !== undefined && b.e2 !== undefined
-    const e2_1 = a.e0 !== undefined && b.e02 !== undefined
+    const e2_1 = a.e1 !== undefined && b.e12 !== undefined
     const e2_2 = a.e2 !== undefined && b.scalar !== undefined
-    const e2_3 = a.e02 !== undefined && b.e0 !== undefined
+    const e2_3 = a.e12 !== undefined && b.e1 !== undefined
     if (e2_0 || e2_1 || e2_2 || e2_3) {
         resultE2 = 0
         if (e2_0) resultE2 += 1.0 * (a.scalar! * b.e2!)
-        if (e2_1) resultE2 += -1.0 * (a.e0! * b.e02!)
+        if (e2_1) resultE2 += -1.0 * (a.e1! * b.e12!)
         if (e2_2) resultE2 += 1.0 * (a.e2! * b.scalar!)
-        if (e2_3) resultE2 += 1.0 * (a.e02! * b.e0!)
+        if (e2_3) resultE2 += 1.0 * (a.e12! * b.e1!)
     }
     let resultE01 = undefined
     const e01_0 = a.scalar !== undefined && b.e01 !== undefined
-    const e01_1 = a.e01 !== undefined && b.scalar !== undefined
-    if (e01_0 || e01_1) {
+    const e01_1 = a.e2 !== undefined && b.e012 !== undefined
+    const e01_2 = a.e01 !== undefined && b.scalar !== undefined
+    const e01_3 = a.e012 !== undefined && b.e2 !== undefined
+    if (e01_0 || e01_1 || e01_2 || e01_3) {
         resultE01 = 0
         if (e01_0) resultE01 += 1.0 * (a.scalar! * b.e01!)
-        if (e01_1) resultE01 += 1.0 * (a.e01! * b.scalar!)
+        if (e01_1) resultE01 += -1.0 * (a.e2! * b.e012!)
+        if (e01_2) resultE01 += 1.0 * (a.e01! * b.scalar!)
+        if (e01_3) resultE01 += -1.0 * (a.e012! * b.e2!)
     }
     let resultE02 = undefined
     const e02_0 = a.scalar !== undefined && b.e02 !== undefined
-    const e02_1 = a.e02 !== undefined && b.scalar !== undefined
-    if (e02_0 || e02_1) {
+    const e02_1 = a.e1 !== undefined && b.e012 !== undefined
+    const e02_2 = a.e02 !== undefined && b.scalar !== undefined
+    const e02_3 = a.e012 !== undefined && b.e1 !== undefined
+    if (e02_0 || e02_1 || e02_2 || e02_3) {
         resultE02 = 0
         if (e02_0) resultE02 += 1.0 * (a.scalar! * b.e02!)
-        if (e02_1) resultE02 += 1.0 * (a.e02! * b.scalar!)
+        if (e02_1) resultE02 += 1.0 * (a.e1! * b.e012!)
+        if (e02_2) resultE02 += 1.0 * (a.e02! * b.scalar!)
+        if (e02_3) resultE02 += 1.0 * (a.e012! * b.e1!)
     }
     let resultE12 = undefined
     const e12_0 = a.scalar !== undefined && b.e12 !== undefined
-    const e12_1 = a.e0 !== undefined && b.e012 !== undefined
-    const e12_2 = a.e12 !== undefined && b.scalar !== undefined
-    const e12_3 = a.e012 !== undefined && b.e0 !== undefined
-    if (e12_0 || e12_1 || e12_2 || e12_3) {
+    const e12_1 = a.e12 !== undefined && b.scalar !== undefined
+    if (e12_0 || e12_1) {
         resultE12 = 0
         if (e12_0) resultE12 += 1.0 * (a.scalar! * b.e12!)
-        if (e12_1) resultE12 += -1.0 * (a.e0! * b.e012!)
-        if (e12_2) resultE12 += 1.0 * (a.e12! * b.scalar!)
-        if (e12_3) resultE12 += -1.0 * (a.e012! * b.e0!)
+        if (e12_1) resultE12 += 1.0 * (a.e12! * b.scalar!)
     }
     let resultE012 = undefined
     const e012_0 = a.scalar !== undefined && b.e012 !== undefined
