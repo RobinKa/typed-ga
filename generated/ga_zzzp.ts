@@ -1285,6 +1285,123 @@ export const reversion = <A extends OptionalMultiVector>(a: A): A => {
     return result as A
 }
 
+export const repr = <A extends OptionalMultiVector>(a: A, digits: number = 3): string => {
+    let result = ""
+    if (a.scalar !== undefined) {
+        if (result === "") {
+            result += a.scalar.toFixed(digits) + ""
+        } else {
+            result += a.scalar >= 0 ? " + " + a.scalar.toFixed(digits) + "" : " - " + Math.abs(a.scalar).toFixed(digits) + ""
+        }
+    }
+    if (a.e0 !== undefined) {
+        if (result === "") {
+            result += a.e0.toFixed(digits) + "e0"
+        } else {
+            result += a.e0 >= 0 ? " + " + a.e0.toFixed(digits) + "e0" : " - " + Math.abs(a.e0).toFixed(digits) + "e0"
+        }
+    }
+    if (a.e1 !== undefined) {
+        if (result === "") {
+            result += a.e1.toFixed(digits) + "e1"
+        } else {
+            result += a.e1 >= 0 ? " + " + a.e1.toFixed(digits) + "e1" : " - " + Math.abs(a.e1).toFixed(digits) + "e1"
+        }
+    }
+    if (a.e2 !== undefined) {
+        if (result === "") {
+            result += a.e2.toFixed(digits) + "e2"
+        } else {
+            result += a.e2 >= 0 ? " + " + a.e2.toFixed(digits) + "e2" : " - " + Math.abs(a.e2).toFixed(digits) + "e2"
+        }
+    }
+    if (a.e3 !== undefined) {
+        if (result === "") {
+            result += a.e3.toFixed(digits) + "e3"
+        } else {
+            result += a.e3 >= 0 ? " + " + a.e3.toFixed(digits) + "e3" : " - " + Math.abs(a.e3).toFixed(digits) + "e3"
+        }
+    }
+    if (a.e01 !== undefined) {
+        if (result === "") {
+            result += a.e01.toFixed(digits) + "e01"
+        } else {
+            result += a.e01 >= 0 ? " + " + a.e01.toFixed(digits) + "e01" : " - " + Math.abs(a.e01).toFixed(digits) + "e01"
+        }
+    }
+    if (a.e02 !== undefined) {
+        if (result === "") {
+            result += a.e02.toFixed(digits) + "e02"
+        } else {
+            result += a.e02 >= 0 ? " + " + a.e02.toFixed(digits) + "e02" : " - " + Math.abs(a.e02).toFixed(digits) + "e02"
+        }
+    }
+    if (a.e03 !== undefined) {
+        if (result === "") {
+            result += a.e03.toFixed(digits) + "e03"
+        } else {
+            result += a.e03 >= 0 ? " + " + a.e03.toFixed(digits) + "e03" : " - " + Math.abs(a.e03).toFixed(digits) + "e03"
+        }
+    }
+    if (a.e12 !== undefined) {
+        if (result === "") {
+            result += a.e12.toFixed(digits) + "e12"
+        } else {
+            result += a.e12 >= 0 ? " + " + a.e12.toFixed(digits) + "e12" : " - " + Math.abs(a.e12).toFixed(digits) + "e12"
+        }
+    }
+    if (a.e13 !== undefined) {
+        if (result === "") {
+            result += a.e13.toFixed(digits) + "e13"
+        } else {
+            result += a.e13 >= 0 ? " + " + a.e13.toFixed(digits) + "e13" : " - " + Math.abs(a.e13).toFixed(digits) + "e13"
+        }
+    }
+    if (a.e23 !== undefined) {
+        if (result === "") {
+            result += a.e23.toFixed(digits) + "e23"
+        } else {
+            result += a.e23 >= 0 ? " + " + a.e23.toFixed(digits) + "e23" : " - " + Math.abs(a.e23).toFixed(digits) + "e23"
+        }
+    }
+    if (a.e012 !== undefined) {
+        if (result === "") {
+            result += a.e012.toFixed(digits) + "e012"
+        } else {
+            result += a.e012 >= 0 ? " + " + a.e012.toFixed(digits) + "e012" : " - " + Math.abs(a.e012).toFixed(digits) + "e012"
+        }
+    }
+    if (a.e013 !== undefined) {
+        if (result === "") {
+            result += a.e013.toFixed(digits) + "e013"
+        } else {
+            result += a.e013 >= 0 ? " + " + a.e013.toFixed(digits) + "e013" : " - " + Math.abs(a.e013).toFixed(digits) + "e013"
+        }
+    }
+    if (a.e023 !== undefined) {
+        if (result === "") {
+            result += a.e023.toFixed(digits) + "e023"
+        } else {
+            result += a.e023 >= 0 ? " + " + a.e023.toFixed(digits) + "e023" : " - " + Math.abs(a.e023).toFixed(digits) + "e023"
+        }
+    }
+    if (a.e123 !== undefined) {
+        if (result === "") {
+            result += a.e123.toFixed(digits) + "e123"
+        } else {
+            result += a.e123 >= 0 ? " + " + a.e123.toFixed(digits) + "e123" : " - " + Math.abs(a.e123).toFixed(digits) + "e123"
+        }
+    }
+    if (a.e0123 !== undefined) {
+        if (result === "") {
+            result += a.e0123.toFixed(digits) + "e0123"
+        } else {
+            result += a.e0123 >= 0 ? " + " + a.e0123.toFixed(digits) + "e0123" : " - " + Math.abs(a.e0123).toFixed(digits) + "e0123"
+        }
+    }
+    return result
+}
+
 export const regressiveProduct = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B) =>
     dual(exteriorProduct(dual(a), dual(b)))
 

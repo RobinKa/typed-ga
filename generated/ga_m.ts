@@ -165,6 +165,25 @@ export const reversion = <A extends OptionalMultiVector>(a: A): A => {
     return result as A
 }
 
+export const repr = <A extends OptionalMultiVector>(a: A, digits: number = 3): string => {
+    let result = ""
+    if (a.scalar !== undefined) {
+        if (result === "") {
+            result += a.scalar.toFixed(digits) + ""
+        } else {
+            result += a.scalar >= 0 ? " + " + a.scalar.toFixed(digits) + "" : " - " + Math.abs(a.scalar).toFixed(digits) + ""
+        }
+    }
+    if (a.e0 !== undefined) {
+        if (result === "") {
+            result += a.e0.toFixed(digits) + "e0"
+        } else {
+            result += a.e0 >= 0 ? " + " + a.e0.toFixed(digits) + "e0" : " - " + Math.abs(a.e0).toFixed(digits) + "e0"
+        }
+    }
+    return result
+}
+
 export const regressiveProduct = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B) =>
     dual(exteriorProduct(dual(a), dual(b)))
 
