@@ -15,16 +15,16 @@ export type AddResultType<A, B> = (
 
 export const add = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): AddResultType<A, B> => {
     const result: any = {
-        scalar: (a.scalar || b.scalar) ? (a.scalar || 0) + (b.scalar || 0) : undefined,
-        e0: (a.e0 || b.e0) ? (a.e0 || 0) + (b.e0 || 0) : undefined,
+        scalar: (a.scalar !== undefined || b.scalar !== undefined) ? (a.scalar || 0) + (b.scalar || 0) : undefined,
+        e0: (a.e0 !== undefined || b.e0 !== undefined) ? (a.e0 || 0) + (b.e0 || 0) : undefined,
     }
     return result as AddResultType<A, B>
 }
 
 export const sub = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): AddResultType<A, B> => {
     const result: any = {
-        scalar: (a.scalar || b.scalar) ? (a.scalar || 0) - (b.scalar || 0) : undefined,
-        e0: (a.e0 || b.e0) ? (a.e0 || 0) - (b.e0 || 0) : undefined,
+        scalar: (a.scalar !== undefined || b.scalar !== undefined) ? (a.scalar || 0) - (b.scalar || 0) : undefined,
+        e0: (a.e0 !== undefined || b.e0 !== undefined) ? (a.e0 || 0) - (b.e0 || 0) : undefined,
     }
     return result as AddResultType<A, B>
 }

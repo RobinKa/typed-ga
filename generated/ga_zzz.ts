@@ -39,28 +39,28 @@ export type AddResultType<A, B> = (
 
 export const add = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): AddResultType<A, B> => {
     const result: any = {
-        scalar: (a.scalar || b.scalar) ? (a.scalar || 0) + (b.scalar || 0) : undefined,
-        e0: (a.e0 || b.e0) ? (a.e0 || 0) + (b.e0 || 0) : undefined,
-        e1: (a.e1 || b.e1) ? (a.e1 || 0) + (b.e1 || 0) : undefined,
-        e2: (a.e2 || b.e2) ? (a.e2 || 0) + (b.e2 || 0) : undefined,
-        e01: (a.e01 || b.e01) ? (a.e01 || 0) + (b.e01 || 0) : undefined,
-        e02: (a.e02 || b.e02) ? (a.e02 || 0) + (b.e02 || 0) : undefined,
-        e12: (a.e12 || b.e12) ? (a.e12 || 0) + (b.e12 || 0) : undefined,
-        e012: (a.e012 || b.e012) ? (a.e012 || 0) + (b.e012 || 0) : undefined,
+        scalar: (a.scalar !== undefined || b.scalar !== undefined) ? (a.scalar || 0) + (b.scalar || 0) : undefined,
+        e0: (a.e0 !== undefined || b.e0 !== undefined) ? (a.e0 || 0) + (b.e0 || 0) : undefined,
+        e1: (a.e1 !== undefined || b.e1 !== undefined) ? (a.e1 || 0) + (b.e1 || 0) : undefined,
+        e2: (a.e2 !== undefined || b.e2 !== undefined) ? (a.e2 || 0) + (b.e2 || 0) : undefined,
+        e01: (a.e01 !== undefined || b.e01 !== undefined) ? (a.e01 || 0) + (b.e01 || 0) : undefined,
+        e02: (a.e02 !== undefined || b.e02 !== undefined) ? (a.e02 || 0) + (b.e02 || 0) : undefined,
+        e12: (a.e12 !== undefined || b.e12 !== undefined) ? (a.e12 || 0) + (b.e12 || 0) : undefined,
+        e012: (a.e012 !== undefined || b.e012 !== undefined) ? (a.e012 || 0) + (b.e012 || 0) : undefined,
     }
     return result as AddResultType<A, B>
 }
 
 export const sub = <A extends OptionalMultiVector, B extends OptionalMultiVector>(a: A, b: B): AddResultType<A, B> => {
     const result: any = {
-        scalar: (a.scalar || b.scalar) ? (a.scalar || 0) - (b.scalar || 0) : undefined,
-        e0: (a.e0 || b.e0) ? (a.e0 || 0) - (b.e0 || 0) : undefined,
-        e1: (a.e1 || b.e1) ? (a.e1 || 0) - (b.e1 || 0) : undefined,
-        e2: (a.e2 || b.e2) ? (a.e2 || 0) - (b.e2 || 0) : undefined,
-        e01: (a.e01 || b.e01) ? (a.e01 || 0) - (b.e01 || 0) : undefined,
-        e02: (a.e02 || b.e02) ? (a.e02 || 0) - (b.e02 || 0) : undefined,
-        e12: (a.e12 || b.e12) ? (a.e12 || 0) - (b.e12 || 0) : undefined,
-        e012: (a.e012 || b.e012) ? (a.e012 || 0) - (b.e012 || 0) : undefined,
+        scalar: (a.scalar !== undefined || b.scalar !== undefined) ? (a.scalar || 0) - (b.scalar || 0) : undefined,
+        e0: (a.e0 !== undefined || b.e0 !== undefined) ? (a.e0 || 0) - (b.e0 || 0) : undefined,
+        e1: (a.e1 !== undefined || b.e1 !== undefined) ? (a.e1 || 0) - (b.e1 || 0) : undefined,
+        e2: (a.e2 !== undefined || b.e2 !== undefined) ? (a.e2 || 0) - (b.e2 || 0) : undefined,
+        e01: (a.e01 !== undefined || b.e01 !== undefined) ? (a.e01 || 0) - (b.e01 || 0) : undefined,
+        e02: (a.e02 !== undefined || b.e02 !== undefined) ? (a.e02 || 0) - (b.e02 || 0) : undefined,
+        e12: (a.e12 !== undefined || b.e12 !== undefined) ? (a.e12 || 0) - (b.e12 || 0) : undefined,
+        e012: (a.e012 !== undefined || b.e012 !== undefined) ? (a.e012 || 0) - (b.e012 || 0) : undefined,
     }
     return result as AddResultType<A, B>
 }
