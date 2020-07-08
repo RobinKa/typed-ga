@@ -6,7 +6,6 @@ export type BladeE01 = { e01: number }
 export type Scalar = BladeScalar
 export type Vector = BladeE0 & BladeE1
 export type BiVector = BladeE01
-export type PseudoTriVector = BladeScalar
 export type PseudoBiVector = BladeScalar
 export type PseudoVector = BladeE0 & BladeE1
 export type PseudoScalar = BladeE01
