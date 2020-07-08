@@ -3,6 +3,18 @@ export type BladeE0 = { e0: number }
 export type BladeE1 = { e1: number }
 export type BladeE01 = { e01: number }
 
+export type Scalar = BladeScalar
+export type Vector = BladeE0 & BladeE1
+export type BiVector = BladeE01
+export type TriVector = 
+export type PseudoTriVector = BladeScalar
+export type PseudoBiVector = BladeScalar
+export type PseudoVector = BladeE0 & BladeE1
+export type PseudoScalar = BladeE01
+export type Even = BladeScalar & BladeE01
+export type Odd = BladeE0 & BladeE1
+export type MultiVector = BladeScalar & BladeE0 & BladeE1 & BladeE01
+
 export type OptionalMultiVector = {
     scalar?: number
     e0?: number
