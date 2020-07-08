@@ -43,6 +43,7 @@ export const geometricProduct = <A extends OptionalMultiVector, B extends Option
     let resultScalar = undefined
     const scalar_0 = a.scalar && b.scalar
     if (scalar_0) {
+        resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
     }
     const result: any = {
@@ -60,6 +61,7 @@ export const innerProduct = <A extends OptionalMultiVector, B extends OptionalMu
     let resultScalar = undefined
     const scalar_0 = a.scalar && b.scalar
     if (scalar_0) {
+        resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
     }
     const result: any = {
@@ -77,6 +79,7 @@ export const exteriorProduct = <A extends OptionalMultiVector, B extends Optiona
     let resultScalar = undefined
     const scalar_0 = a.scalar && b.scalar
     if (scalar_0) {
+        resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
     }
     const result: any = {

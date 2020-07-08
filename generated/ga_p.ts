@@ -57,6 +57,7 @@ export const geometricProduct = <A extends OptionalMultiVector, B extends Option
     const scalar_0 = a.scalar && b.scalar
     const scalar_1 = a.e0 && b.e0
     if (scalar_0 || scalar_1) {
+        resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
         if (scalar_1) resultScalar += 1.0 * (a.e0! * b.e0!)
     }
@@ -64,6 +65,7 @@ export const geometricProduct = <A extends OptionalMultiVector, B extends Option
     const e0_0 = a.scalar && b.e0
     const e0_1 = a.e0 && b.scalar
     if (e0_0 || e0_1) {
+        resultE0 = 0
         if (e0_0) resultE0 += 1.0 * (a.scalar! * b.e0!)
         if (e0_1) resultE0 += 1.0 * (a.e0! * b.scalar!)
     }
@@ -89,6 +91,7 @@ export const innerProduct = <A extends OptionalMultiVector, B extends OptionalMu
     const scalar_0 = a.scalar && b.scalar
     const scalar_1 = a.e0 && b.e0
     if (scalar_0 || scalar_1) {
+        resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
         if (scalar_1) resultScalar += 1.0 * (a.e0! * b.e0!)
     }
@@ -96,6 +99,7 @@ export const innerProduct = <A extends OptionalMultiVector, B extends OptionalMu
     const e0_0 = a.scalar && b.e0
     const e0_1 = a.e0 && b.scalar
     if (e0_0 || e0_1) {
+        resultE0 = 0
         if (e0_0) resultE0 += 1.0 * (a.scalar! * b.e0!)
         if (e0_1) resultE0 += 1.0 * (a.e0! * b.scalar!)
     }
@@ -119,12 +123,14 @@ export const exteriorProduct = <A extends OptionalMultiVector, B extends Optiona
     let resultScalar = undefined
     const scalar_0 = a.scalar && b.scalar
     if (scalar_0) {
+        resultScalar = 0
         if (scalar_0) resultScalar += 1.0 * (a.scalar! * b.scalar!)
     }
     let resultE0 = undefined
     const e0_0 = a.scalar && b.e0
     const e0_1 = a.e0 && b.scalar
     if (e0_0 || e0_1) {
+        resultE0 = 0
         if (e0_0) resultE0 += 1.0 * (a.scalar! * b.e0!)
         if (e0_1) resultE0 += 1.0 * (a.e0! * b.scalar!)
     }
