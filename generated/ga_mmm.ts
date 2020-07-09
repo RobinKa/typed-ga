@@ -826,10 +826,10 @@ export const exponential = <A extends OptionalMultiVector>(a: A) => {
 
     if (s < -0.1) {
         const rootS = Math.sign(s) * Math.sqrt(Math.abs(s))
-        return add({ scalar: Math.cos(rootS) }, multiply(div(a, rootS), Math.sin(rootS) / rootS))
+        return add({ scalar: Math.cos(rootS) }, multiply(a, Math.sin(rootS) / rootS))
     } else if (s > 0.1) {
         const rootS = Math.sign(s) * Math.sqrt(Math.abs(s))
-        return add({ scalar: Math.cosh(rootS) }, multiply(div(a, rootS), Math.sinh(rootS) / rootS))
+        return add({ scalar: Math.cosh(rootS) }, multiply(a, Math.sinh(rootS) / rootS))
     } else {
         return add({ scalar: 1 }, a)
     }
