@@ -1234,11 +1234,11 @@ exports.exponential = function (a) {
         throw new Error("Input to exponential needs to square to scalar");
     }
     var s = gp.scalar;
-    if (s < -0.1) {
+    if (s < 0) {
         var rootS = Math.sign(s) * Math.sqrt(Math.abs(s));
         return exports.add({ scalar: Math.cos(rootS) }, exports.multiply(a, Math.sin(rootS) / rootS));
     }
-    else if (s > 0.1) {
+    else if (s > 0) {
         var rootS = Math.sign(s) * Math.sqrt(Math.abs(s));
         return exports.add({ scalar: Math.cosh(rootS) }, exports.multiply(a, Math.sinh(rootS) / rootS));
     }
